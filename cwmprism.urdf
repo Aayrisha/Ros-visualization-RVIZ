@@ -1,0 +1,271 @@
+<robot
+  name="cwmprism">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.957358894955478 -0.524270710975352 0.57783481713303"
+        rpy="0 0 0" />
+      <mass
+        value="6.89503487299706" />
+      <inertia
+        ixx="0.463910832861563"
+        ixy="-0.0084784653149954"
+        ixz="0.0190215304922888"
+        iyy="0.628402143448255"
+        iyz="-0.00186739141190468"
+        izz="0.916769880592964" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://cwmprism/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://cwmprism/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="leadscrew1">
+    <inertial>
+      <origin
+        xyz="-6.30357688269356E-08 4.02639119101433E-07 0.324940436594481"
+        rpy="0 0 0" />
+      <mass
+        value="0.287159850984848" />
+      <inertia
+        ixx="0.00924492168342225"
+        ixy="-1.83415781260937E-09"
+        ixz="5.55212203406239E-09"
+        iyy="0.00924492202484706"
+        iyz="6.9301050911992E-07"
+        izz="2.07922902903099E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://cwmprism/meshes/leadscrew1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://cwmprism/meshes/leadscrew1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="1"
+    type="fixed">
+    <origin
+      xyz="0.54787 -0.52152 1.2965"
+      rpy="3.1416 -5.1319E-17 -0.99384" />
+    <parent
+      link="base_link" />
+    <child
+      link="leadscrew1" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="leadnut1">
+    <inertial>
+      <origin
+        xyz="-0.0599918389970476 -0.0161021336391436 0.0200515833907489"
+        rpy="0 0 0" />
+      <mass
+        value="0.879482230835278" />
+      <inertia
+        ixx="0.00933870379244803"
+        ixy="9.20607449102261E-08"
+        ixz="-2.13507206809233E-08"
+        iyy="0.00251261230402863"
+        iyz="-0.000278135485909877"
+        izz="0.0112743094002328" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://cwmprism/meshes/leadnut1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://cwmprism/meshes/leadnut1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="2"
+    type="prismatic">
+    <origin
+      xyz="-0.020287 -0.078825 0.23776"
+      rpy="0 0 -2.5646" />
+    <parent
+      link="leadscrew1" />
+    <child
+      link="leadnut1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0.1"
+      upper="0.2"
+      effort="70"
+      velocity="0.5" />
+  </joint>
+  <link
+    name="sliding">
+    <inertial>
+      <origin
+        xyz="-0.0960066404534474 0.0399997757235483 -0.00927466639365182"
+        rpy="0 0 0" />
+      <mass
+        value="0.144460832584404" />
+      <inertia
+        ixx="5.89883504621228E-05"
+        ixy="-2.77585124159905E-09"
+        ixz="-1.52526839414019E-07"
+        iyy="0.000615903805069502"
+        iyz="-3.34576694505401E-10"
+        izz="0.000651307338551225" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://cwmprism/meshes/sliding.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://cwmprism/meshes/sliding.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="3"
+    type="prismatic">
+    <origin
+      xyz="0.035504 0.2628 0.048458"
+      rpy="0 0 0" />
+    <parent
+      link="leadnut1" />
+    <child
+      link="sliding" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="1"
+      effort="70"
+      velocity="0.5" />
+  </joint>
+  <link
+    name="revolute">
+    <inertial>
+      <origin
+        xyz="-0.123821502813402 -9.87257942064446E-09 0.00700000827343839"
+        rpy="0 0 0" />
+      <mass
+        value="0.20059769694145" />
+      <inertia
+        ixx="4.40212550724925E-05"
+        ixy="1.11452595199721E-17"
+        ixz="-5.80463391679467E-19"
+        iyy="0.00139142066236795"
+        iyz="-1.53412280713357E-21"
+        izz="0.00142888905934036" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://cwmprism/meshes/revolute.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://cwmprism/meshes/revolute.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="4"
+    type="revolute">
+    <origin
+      xyz="0.019045 0.26199 0.164"
+      rpy="3.1416 0 1.0929" />
+    <parent
+      link="sliding" />
+    <child
+      link="revolute" />
+     <limit
+      lower="0"
+upper="6.28"
+effort="0.05"
+velocity="0.05"
+/>
+    <axis
+      xyz="0 0 1" />
+  </joint>
+</robot>
